@@ -1,17 +1,10 @@
-# E-commerce CRUD API
+# E-commerce Application
 
-This is a simple CRUD (Create, Read, Update, Delete) API for managing products in an e-commerce application. It provides endpoints for performing basic operations on products such as creating, reading, updating, and deleting.
+This is a simple e-commerce application built with Node.js, Express.js, and MongoDB.
 
-### Technologies Used
+## Features
 
-- Node.js
-- Express.js
-- JSON
-
-### API Endpoints
-
-- `GET /products`: Retrieves all products.
-- `GET /products/:id`: Retrieves a single product by ID.
-- `POST /products`: Creates a new product.
-- `PATCH /products/:id`: Updates an existing product by ID.
-- `DELETE /products/:id`: Deletes a product by ID.
+- User authentication and authorization
+- CRUD operations for products
+- Cart functionality (add to cart, remove from cart)
+- API endpoints for managing users, products, and cart
