@@ -5,13 +5,16 @@ import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 // Use the product routes
 app.use("/products", productRoutes);
+// Use the user routes
+app.use("/users", userRoutes);
 
 const port = process.env.PORT || 5000;
 const start = async () => {
