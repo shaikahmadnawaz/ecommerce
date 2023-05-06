@@ -33,6 +33,20 @@ app.post("/products", (req, res) => {
   res.status(201).json(newProduct);
 });
 
+// update a product
+app.patch("/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const { name, price } = req.body;
+  const product = products.find((product) => product.id === productId);
+  if (!product) {
+    res.status(404).json({ message: "Product not found" });
+  } else {
+    product.name = name || product.name;
+    product.price = price || product.price;
+    res.json(product);
+  }
+});
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
