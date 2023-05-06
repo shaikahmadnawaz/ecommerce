@@ -25,6 +25,14 @@ app.get("/products/:id", (req, res) => {
   }
 });
 
+// create a new product
+app.post("/products", (req, res) => {
+  const { id, name, price } = req.body;
+  const newProduct = { id, name, price };
+  products.push(newProduct);
+  res.status(201).json(newProduct);
+});
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
