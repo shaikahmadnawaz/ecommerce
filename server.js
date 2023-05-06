@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,8 @@ app.use(cors());
 app.use("/products", productRoutes);
 // Use the user routes
 app.use("/users", userRoutes);
+// Use the cart routes
+app.use("/cart", cartRoutes);
 
 const port = process.env.PORT || 5000;
 const start = async () => {
