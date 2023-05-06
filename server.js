@@ -1,8 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
+import connectDB from "./db/connectDB.js";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 let products = [
   { id: 1, name: "Product 1", price: 10.99 },
@@ -61,7 +66,15 @@ app.delete("/products/:id", (req, res) => {
   }
 });
 
-const port = 5000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+const port = process.env.PORT || 5000;
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGODB_URI);
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+start();
