@@ -47,6 +47,20 @@ app.patch("/products/:id", (req, res) => {
   }
 });
 
+// delete a product
+app.delete("/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const productIndex = products.findIndex(
+    (product) => product.id === productId
+  );
+  if (productIndex === -1) {
+    res.status(404).json({ message: "Product not found" });
+  } else {
+    const deletedProduct = products.splice(productIndex, 1)[0];
+    res.json(deletedProduct);
+  }
+});
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
